@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+:root {
+  --rf-purple: #6706ce;
+  --rf-light-purple: #a189ff;
+  --rf-white: #eeeeee;
+  --rf-black: #0e151f;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -7,7 +14,7 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-[color:var(--rf-white)];
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;

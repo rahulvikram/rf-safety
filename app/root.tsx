@@ -9,8 +9,11 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import favicon from "assets/favicon.ico"
+import { ClerkProvider } from "@clerk/clerk-react";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: favicon, type: "image/x-icon" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -23,6 +26,8 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -33,9 +38,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+          <ScrollRestoration />
+          <Scripts />
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
