@@ -1,0 +1,18 @@
+app/
+├── root.tsx
+├── routes.ts
+├── routes/
+│   ├── home.tsx
+│   ├── dashboard.tsx        # Main analytics dashboard
+│   ├── zones.$zoneId.tsx    # Dynamic route for specific zone
+│   └── api.analytics.ts     # API endpoint for real-time data
+├── lib/
+│   ├── roboflow.server.ts   # Roboflow Python SDK integration
+│   ├── supervision.server.ts # Supervision API client
+│   └── db.server.ts         # Database connection
+├── components/
+│   ├── ZoneMap.tsx          # Zone visualization component
+│   ├── AlertPanel.tsx       # Safety alerts UI
+│   └── VideoFeed.tsx        # Camera feed display
+└── utils/
+    └── safety-calculations.ts
