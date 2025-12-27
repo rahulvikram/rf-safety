@@ -1,6 +1,10 @@
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
+
 export function Welcome() {
   return (
-    <main className="flex flex-col items-center justify-center pt-16 pb-4">
-    </main>
-  );
-}
+    <div>
+      <h1>Test</h1>
+    </div>
+  )
+} 
