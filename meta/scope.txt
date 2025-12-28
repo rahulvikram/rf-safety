@@ -1,2 +1,5 @@
 Project scope/roadmap
-1. 
+1. take user input via a webcam or video file or link to youtube URL (youtube links must be handled via backend vidgear library)
+2. use OpenCV loop to parse and monitor video input
+3. Use  Roboflow hosted inference API to call inference on custom multi-class model to detect objects
+4. Use Roboflow supervision to track objects across frames, define zones, compute violations and other metrics (define these later) 
