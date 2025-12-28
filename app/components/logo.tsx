@@ -6,8 +6,8 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
             src={logoImage}
             alt="Roboflow"
             className="block rounded-full"
-            width={size === "sm" ? 30 : size === "md" ? 55 : 70}
-            height={size === "sm" ? 30 : size === "md" ? 55 : 70}
+            width={size === "sm" ? 30 : size === "md" ? 50 : 70}
+            height={size === "sm" ? 30 : size === "md" ? 50 : 70}
         />
     )
 }

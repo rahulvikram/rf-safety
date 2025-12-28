@@ -6,7 +6,7 @@ export function Header() {
             <header className="flex flex-col">
                 <div className="flex flex-row items-center gap-5">
                     <Logo size="md" />
-                    <h1 className="flex flex-row gap-2 text-4xl font-black items-center" style={{ color: "var(--rf-purple)" }}>
+                    <h1 className="flex flex-row gap-2 text-3xl font-black items-center" style={{ color: "var(--rf-purple)" }}>
                         ZoneGuard
                     </h1>
                 </div>
