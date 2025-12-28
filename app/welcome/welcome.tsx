@@ -28,7 +28,7 @@ export function Welcome() {
         `}
       >
         <div className="flex flex-col h-full">
-          <div className="p-6 border-b border-border flex items-center justify-between">
+          <div className="p-4 border-b border-border flex items-center justify-between">
             <Header />
             {/* Hamburger/collapse button for sidebar (shows on all sizes except fully collapsed on desktop) */}
             <Button
@@ -106,7 +106,7 @@ export function Welcome() {
                 <Menu className="h-5 w-5" />
               </Button>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Dashboard</h1>
+                <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
                 <p className="text-sm text-muted-foreground">Real-time zone monitoring</p>
               </div>
             </div>

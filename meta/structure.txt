@@ -1,18 +1,49 @@
-app/
-├── root.tsx
-├── routes.ts
-├── routes/
-│   ├── home.tsx
-│   ├── dashboard.tsx        # Main analytics dashboard
-│   ├── zones.$zoneId.tsx    # Dynamic route for specific zone
-│   └── api.analytics.ts     # API endpoint for real-time data
-├── lib/
-│   ├── roboflow.server.ts   # Roboflow Python SDK integration
-│   ├── supervision.server.ts # Supervision API client
-│   └── db.server.ts         # Database connection
-├── components/
-│   ├── ZoneMap.tsx          # Zone visualization component
-│   ├── AlertPanel.tsx       # Safety alerts UI
-│   └── VideoFeed.tsx        # Camera feed display
-└── utils/
-    └── safety-calculations.ts
+rf-safety/
+├── frontend/ 
+│   ├── app/
+│   │   ├── root.tsx
+│   │   ├── routes.ts
+│   │   ├── routes/
+│   │   │   ├── home.tsx
+│   │   │   ├── dashboard.tsx
+│   │   │   └── zones.$zoneId.tsx
+│   │   ├── components/
+│   │   │   ├── ZoneMap.tsx
+│   │   │   ├── AlertPanel.tsx
+│   │   │   └── VideoFeed.tsx
+│   │   └── lib/
+│   │       └── api-client.ts    # Client to communicate with Python backend
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── Dockerfile
+│
+├── backend/                      # New Python backend
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py              # FastAPI/Flask entry point
+│   │   ├── config.py            # Environment & settings
+│   │   ├── routers/
+│   │   │   ├── __init__.py
+│   │   │   ├── inference.py     # Roboflow inference endpoints
+│   │   │   ├── video.py         # VidGear streaming endpoints
+│   │   │   └── zones.py         # Zone analytics endpoints
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── roboflow_service.py   # Roboflow SDK wrapper
+│   │   │   ├── video_service.py      # VidGear capture & streaming
+│   │   │   ├── opencv_service.py     # OpenCV processing pipelines
+│   │   │   └── zone_detection.py     # Zone violation logic
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── detection.py     # Pydantic models for detections
+│   │   │   └── zone.py          # Zone configuration models
+│   │   └── utils/
+│   │       ├── __init__.py
+│   │       └── supervision_utils.py  # Supervision library helpers
+│   ├── requirements.txt
+│   ├── pyproject.toml
+│   └── Dockerfile
+│
+├── docker-compose.yml            # Orchestrate both services
+├── .env                          # Shared environment variables
+└── README.md
