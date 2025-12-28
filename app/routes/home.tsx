@@ -27,10 +27,6 @@ export default function Home() {
 
       <SignedIn>
         <div className="relative w-full min-h-screen flex flex-col">
-          <div className="p-4 flex flex-row items-center justify-between">
-            <Header />
-            <UserButton />
-          </div>
           <div className="flex-1 flex items-center justify-center">
             <Welcome />
           </div>
