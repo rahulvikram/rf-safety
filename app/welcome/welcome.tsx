@@ -11,17 +11,14 @@ import { apiUploadFile } from "../lib/client";
 export function Welcome() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const [inputUrl, setInputUrl] = useState("");
-  const [videoUrl, setVideoUrl] = useState("");
+  const [videoUrl, setVideoUrl] = useState("")
+  const [streamKey, setStreamKey] = useState("")
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setVideoUrl(inputUrl);
-  }
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+  
   async function handleFileUpload(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!selectedFile) return;
@@ -31,13 +28,12 @@ export function Welcome() {
     
     try {
       const response = await apiUploadFile("/api/video/upload", selectedFile, "file");
-      
+      console.log("Uploaded video_id:", response.video_id);
       if (response.error) {
         setUploadError(response.error);
       } else {
-        // Set the stream URL to display the video
-        setVideoUrl(`http://localhost:8000/api/video/stream`);
-        console.log("Upload successful:", response);
+        setVideoUrl(`${API_BASE_URL}/api/video/stream?t=${Date.now()}`);
+        setStreamKey(response.video_id);
       }
     } catch (error) {
       setUploadError("Failed to upload video. Please try again.");
@@ -186,6 +182,36 @@ export function Welcome() {
           
           {/* Alerts section */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">            
+            <div className="glass-panel rounded-xl p-5">
+              <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Camera className="h-4 w-4 text-primary" />
+                Workflow Input
+              </h3>
+              <form
+                className="space-y-4"
+                onSubmit={handleFileUpload}
+                encType="multipart/form-data"
+              >
+                <Input
+                  type="file"
+                  accept="video/*"
+                  onChange={e => setSelectedFile(e.target.files?.[0] || null)}
+                  disabled={isUploading}
+                />
+                <Button style={{ backgroundColor: "var(--rf-purple)" }} type="submit" disabled={!selectedFile || isUploading}>
+                  {isUploading ? "Uploading..." : "Upload"}
+                </Button>
+                {uploadError && (
+                  <p className="text-sm text-destructive">{uploadError}</p>
+                )}
+              </form>
+            </div>
+            {videoUrl && (
+              <VideoFeed
+                videoUrl={videoUrl}
+                streamKey={streamKey}
+              />
+            )}
             {/* Quick stats */}
             <div className="glass-panel rounded-xl p-5">
               <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
@@ -211,33 +237,6 @@ export function Welcome() {
                 ))}
               </div>
             </div>
-            <div className="glass-panel rounded-xl p-5">
-              <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-                <Camera className="h-4 w-4 text-primary" />
-                Live Video Feed
-              </h3>
-              <form
-                className="space-y-4"
-                onSubmit={handleFileUpload}
-                encType="multipart/form-data"
-              >
-                <Input
-                  type="file"
-                  accept="video/*"
-                  onChange={e => setSelectedFile(e.target.files?.[0] || null)}
-                  disabled={isUploading}
-                />
-                <Button type="submit" disabled={!selectedFile || isUploading}>
-                  {isUploading ? "Uploading..." : "Upload"}
-                </Button>
-                {uploadError && (
-                  <p className="text-sm text-destructive">{uploadError}</p>
-                )}
-              </form>
-            </div>
-            {videoUrl && (
-              <VideoFeed isLive={true} resolution="1920x1080" model="RF-DETR" latency="42ms" />
-            )}
           </div>
         </main>
       </div>
