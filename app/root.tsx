@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import favicon from "assets/favicon.ico"
+import favicon from "./assets/favicon.ico"
 import { ClerkProvider } from "@clerk/clerk-react";
 
 export const links: Route.LinksFunction = () => [

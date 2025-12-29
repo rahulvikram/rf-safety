@@ -1,4 +1,4 @@
-import logoImage from "assets/logo.png";
+import logoImage from "../assets/logo.png";
 
 export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
     return (
