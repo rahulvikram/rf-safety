@@ -3,8 +3,7 @@ import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-from .routers.video import video_bp
-
+from routers.video import video_bp
 
 def create_app() -> Flask:
     """Create and configure the Flask application."""

@@ -4,7 +4,7 @@ import uuid
 from flask import Blueprint, jsonify, request, Response, current_app
 from werkzeug.utils import secure_filename
 
-from ..services.video_service import get_video_service
+from services.video_service import get_video_service
 
 video_bp = Blueprint("video", __name__)
 
