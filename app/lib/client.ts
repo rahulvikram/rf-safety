@@ -43,3 +43,7 @@ export async function apiUploadFile(endpoint: string, file: File, fieldName: str
     });
     return response.json();
 }
+
+export async function runInference() {
+    return apiPost('/api/inference/run');
+}

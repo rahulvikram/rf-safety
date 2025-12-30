@@ -6,7 +6,7 @@ import { Input } from "../components/ui/input";
 import { Activity, Camera, MapPin, AlertTriangle, Eye, Settings, Zap, LogOut, Menu, Clock, X } from "lucide-react";
 import { Header } from "../components/header";
 import { VideoFeed } from "../components/VideoFeed";
-import { apiUploadFile } from "../lib/client";
+import { apiUploadFile, runInference } from "../lib/client";
 
 export function Welcome() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -32,8 +32,13 @@ export function Welcome() {
       if (response.error) {
         setUploadError(response.error);
       } else {
-        setVideoUrl(`${API_BASE_URL}/api/video/stream?t=${Date.now()}`);
-        setStreamKey(response.video_id);
+        const inferenceResponse = await runInference();
+        if (inferenceResponse.error) {
+          setUploadError(inferenceResponse.error);
+        } else {
+          setVideoUrl(inferenceResponse.output_path);
+          setStreamKey(inferenceResponse.video_id);
+        }
       }
     } catch (error) {
       setUploadError("Failed to upload video. Please try again.");
