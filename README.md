@@ -1,5 +1,19 @@
-# RF Safety Analytics
+# ZoneGuard
 This project is a real-time, zone-based, safety analytics platform, integrating the Roboflow Python SDK and the Supervision API.
+
+![App Demo](./image.png)
+
+
+## Tech Stack
+- React Router
+- Tailwind CSS
+- Shadcn UI
+- Clerk
+- Roboflow Inference
+- Roboflow Supervision
+- Python
+- Flask
+- OpenCV
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
