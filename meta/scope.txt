@@ -6,4 +6,9 @@ Project scope/roadmap
 
 
 
+inference video_path usage:
+- call inference route from frontend, passing in path to uploaded video (from uploads/ folder)
+- pass that path through call to inference service, use as video_path
+
+
 python packages needed: opencv, supervision, inference, vidgear, flask

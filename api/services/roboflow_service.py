@@ -1,3 +1,0 @@
-from inference import InferencePipeline
-from supervision.draw.utils import calculate_optimal_line_thickness, calculate_optimal_text_scale
-import cv2
