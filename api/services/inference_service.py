@@ -4,6 +4,7 @@ import cv2
 import os
 import shutil
 import uuid
+from typing import Optional, Generator
 
 import config
 
@@ -84,3 +85,14 @@ class InferenceService:
         self.frame_count = 0
 
         print(f"Compiled frames into video at {output_path}")
+
+# Singleton instance
+_inference_service: Optional[InferenceService] = None
+
+
+def get_inference_service() -> InferenceService:
+    """Get or create the inference service singleton."""
+    global _inference_service
+    if _inference_service is None:
+        _inference_service = InferenceService()
+    return _inference_service

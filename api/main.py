@@ -4,6 +4,8 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 
 from routers.video import video_bp
+from routers.inference import inference_bp
+
 
 def create_app() -> Flask:
     """Create and configure the Flask application."""
@@ -22,6 +24,7 @@ def create_app() -> Flask:
     
     # Register blueprints
     app.register_blueprint(video_bp, url_prefix="/api/video")
+    app.register_blueprint(inference_bp, url_prefix="/api/inference")
     
     # Health check routes
     @app.route("/", methods=["GET"])
