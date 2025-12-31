@@ -58,7 +58,6 @@ class InferenceService:
             max_fps=15,
             on_prediction=self.sink,
             workflows_parameters={
-                "bounding_box_thickness": calculate_optimal_line_thickness(resolution),
                 "confidence": 0.1,
                 "class_filter": ["road", "car", "person", "crosswalk", "sign"]
             }
