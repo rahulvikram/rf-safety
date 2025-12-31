@@ -37,8 +37,8 @@ export function Welcome() {
           setUploadError(inferenceResponse.error);
         } else {
           console.log("Inference response:", inferenceResponse.inference_results);
-          // setVideoUrl(inferenceResponse.output_path);
-          // setStreamKey(inferenceResponse.video_id);
+          setVideoUrl(`${API_BASE_URL}/api/video/stream`);
+          setStreamKey(inferenceResponse.video_id);
         }
       }
     } catch (error) {
@@ -193,6 +193,7 @@ export function Welcome() {
                 <Camera className="h-4 w-4 text-primary" />
                 Workflow Input
               </h3>
+              <p className="text-sm text-muted-foreground">Upload a video to run the workflow inference.</p>
               <form
                 className="space-y-4"
                 onSubmit={handleFileUpload}
