@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-class Config:
+class ConfigObject:
     """Application configuration loaded from environment variables."""
 
     # Roboflow API
@@ -17,5 +17,5 @@ class Config:
     MAX_CONTENT_LENGTH: int = 500 * 1024 * 1024  # 500MB
     UPLOAD_FOLDER: str = os.path.join(os.path.dirname(__file__), "uploads")
 
-config = Config()
+config_object = ConfigObject()
 

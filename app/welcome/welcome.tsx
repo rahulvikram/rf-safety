@@ -36,7 +36,7 @@ export function Welcome() {
         if (inferenceResponse.error) {
           setUploadError(inferenceResponse.error);
         } else {
-          console.log("Inference response:", inferenceResponse);
+          console.log("Inference response:", inferenceResponse.inference_results);
           // setVideoUrl(inferenceResponse.output_path);
           // setStreamKey(inferenceResponse.video_id);
         }
@@ -205,7 +205,7 @@ export function Welcome() {
                   disabled={isUploading}
                 />
                 <Button style={{ backgroundColor: "var(--rf-purple)" }} type="submit" disabled={!selectedFile || isUploading}>
-                  {isUploading ? "Uploading..." : "Upload"}
+                  {isUploading ? "Running Inference..." : "Upload"}
                 </Button>
                 {uploadError && (
                   <p className="text-sm text-destructive">{uploadError}</p>
