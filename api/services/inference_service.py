@@ -72,7 +72,7 @@ class InferenceService:
             max_fps=fps,
             on_prediction=self.sink,
             workflows_parameters={
-                "class_filter": ["road", "car", "stop sign"],
+                "class_filter": ["person", "car", "stop sign"],
                 "confidence": 0.1
             }
         )

@@ -86,7 +86,6 @@ export function Welcome() {
           <nav className="flex-1 p-4 space-y-1">
             {[
               { icon: Activity, label: "Dashboard", active: true },
-              { icon: Camera, label: "Live Feed" },
             ].map((item) => (
               <button
                 key={item.label}
