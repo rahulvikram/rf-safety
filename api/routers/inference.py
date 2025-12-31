@@ -25,13 +25,13 @@ def run_inference():
     
     # Stop the current stream while processing
     video_service.stop()
-    
+
     try:
         # Run the workflow inference on the user uploaded video and set the output source
         inference_service = get_inference_service()
         output_path = inference_service.run_workflow_inference(video_path)
         video_service.set_source(output_path)
-        
+
         return jsonify({
             "status": "completed",
             "output_path": output_path,

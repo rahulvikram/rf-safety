@@ -36,8 +36,9 @@ export function Welcome() {
         if (inferenceResponse.error) {
           setUploadError(inferenceResponse.error);
         } else {
-          setVideoUrl(inferenceResponse.output_path);
-          setStreamKey(inferenceResponse.video_id);
+          console.log("Inference response:", inferenceResponse);
+          // setVideoUrl(inferenceResponse.output_path);
+          // setStreamKey(inferenceResponse.video_id);
         }
       }
     } catch (error) {
