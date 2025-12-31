@@ -179,6 +179,7 @@ export function Welcome() {
               <h3 className="font-semibold text-foreground flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
                 Zone Status
+                <span className="ml-2 text-green-600 font-medium">All Clear!</span>
               </h3>
               <div className="space-y-3">
               </div>
