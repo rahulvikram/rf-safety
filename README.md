@@ -17,15 +17,13 @@ This project is a real-time, zone-based, safety analytics platform, integrating 
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
-### Installation
+### Installation & Development
 
-Install the dependencies:
+Install the frontend dependencies:
 
 ```bash
 npm install
 ```
-
-### Development
 
 Start the development server with HMR:
 
@@ -33,7 +31,24 @@ Start the development server with HMR:
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Install the backend dependencies:
+
+```bash
+cd api
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+Start the backend server:
+
+```bash
+flask --app main:app run
+```
+
+Your React app will be available at `http://localhost:5173`.
+Your Flask API will be available at `http://localhost:8000`.
 
 ## Building for Production
 
