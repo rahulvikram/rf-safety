@@ -2,6 +2,10 @@
 This project is a real-time, zone-based, safety analytics platform, integrating the Roboflow Python SDK and the Supervision API.
 
 ![App Demo](./image.png)
+### What It Does
+1. User uploads video footage of a traffic cam or a car's dashcam
+2. Platform's backend calls Roboflow inference and supervision APIs to segment video frames and detect objects using bounding boxes
+3. Algorithm detects overlap between people and roadways for warnings, and people and cars for alerts
 
 
 ## Tech Stack
